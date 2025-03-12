@@ -1,15 +1,19 @@
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+app.use("/imgs", express.static(path.join(__dirname, "imgs")));
 
 const phoneList = [
   {
     company: "Iphone",
     phones: [
       {
+        id: 1,
         name: "Apple iPhone 16 Pro Max",
         released: "Released 2024, September 20",
         mermory: "256GB/512GB/1TB storage, no card slot",
@@ -22,11 +26,11 @@ const phoneList = [
         chipset: "Apple A18 Pro",
         battery: "4685",
         charging: "PD2.0",
-        wat: "25W",
-        img: "",
+        watt: "25W",
+        img: "imgs/1.jpg",
       },
-
       {
+        id: 2,
         name: "Apple iPhone 16 Plus",
         released: "Released 2024, September 20",
         mermory: "128GB/256GB/512GB storage, no card slot",
@@ -39,10 +43,11 @@ const phoneList = [
         chipset: "Apple A18",
         battery: "4674",
         charging: "PD2.0",
-        wat: "25W",
-        img: "",
+        watt: "25W",
+        img: "imgs/2.jpg",
       },
       {
+        id: 3,
         name: "Apple iPhone 13 Pro Max",
         released: "Released 2021, September 24",
         mermory: "128GB/256GB/1TB storage, no card slot",
@@ -55,10 +60,11 @@ const phoneList = [
         chipset: "Apple A15 Bionic",
         battery: "4352",
         charging: "PD2.0",
-        wat: "15W",
-        img: "",
+        watt: "15W",
+        img: "imgs/3.jpg",
       },
       {
+        id: 4,
         name: "Apple iPhone XS Max",
         released: "Released 2018, September 21",
         mermory: "64GB/256GB/512GB storage, no card slot",
@@ -71,15 +77,17 @@ const phoneList = [
         chipset: "Apple A12 Bionic",
         battery: "3174",
         charging: "15w",
-        wat: "5W",
-        img: "",
+        watt: "5W",
+        img: "imgs/4.jpg",
       },
     ],
   },
+
   {
     company: "Samsung",
     phones: [
       {
+        id: 5,
         name: "Samsung Galaxy S24 Ultra",
         released: "Released 2024, January 17",
         memory: "256GB/512GB/1TB storage, no card slot",
@@ -93,9 +101,10 @@ const phoneList = [
         battery: "5000mAh",
         charging: "45W",
         watt: "45W",
-        img: "",
+        img: "imgs/5.jpg",
       },
       {
+        id: 6,
         name: "Samsung Galaxy S24+",
         released: "Released 2024, January 17",
         memory: "256GB/512GB storage, no card slot",
@@ -109,9 +118,10 @@ const phoneList = [
         battery: "4900mAh",
         charging: "45W",
         watt: "45W",
-        img: "",
+        img: "imgs/6.jpg",
       },
       {
+        id: 7,
         name: "Samsung Galaxy S24",
         released: "Released 2024, January 17",
         memory: "128GB/256GB/512GB storage, no card slot",
@@ -125,9 +135,10 @@ const phoneList = [
         battery: "4000mAh",
         charging: "25W",
         watt: "25W",
-        img: "",
+        img: "imgs/6d.jpg",
       },
       {
+        id: 8,
         name: "Samsung Galaxy S24 FE",
         released: "Released 2024, September 26",
         memory: "128GB/256GB/512GB storage, no card slot",
@@ -141,9 +152,10 @@ const phoneList = [
         battery: "4700mAh",
         charging: "25W",
         watt: "25W",
-        img: "",
+        img: "imgs/8.jpg",
       },
       {
+        id: 9,
         name: "Samsung Galaxy A56 5G",
         released: "Released 2025, March 4",
         memory: "128GB/256GB storage, microSDXC slot",
@@ -157,23 +169,7 @@ const phoneList = [
         battery: "5000mAh",
         charging: "45W",
         watt: "45W",
-        img: "",
-      },
-      {
-        name: "Samsung Galaxy A36 5G",
-        released: "Released 2025, March 4",
-        memory: "128GB/256GB storage, microSDXC slot",
-        os: "Android 14, One UI 6.1",
-        display: '6.7"',
-        resolution: "2400x1080 pixels",
-        camera: "50MP",
-        photoandvideo: "4K",
-        ram: "6GB/8GB",
-        chipset: "Snapdragon 6 Gen3",
-        battery: "5000mAh",
-        charging: "45W",
-        watt: "45W",
-        img: "",
+        img: "imgs/9.jpg",
       },
     ],
   },
@@ -181,6 +177,7 @@ const phoneList = [
     company: "Sony",
     phones: [
       {
+        id: 10,
         name: "Sony Xperia 1 V",
         released: "Released 2023, May 11",
         memory: "256GB/512GB storage, microSDXC",
@@ -194,9 +191,10 @@ const phoneList = [
         battery: "5000mAh",
         charging: "Fast charging",
         watt: "30W",
-        img: "",
+        img: "imgs/11.jpg",
       },
       {
+        id: 11,
         name: "Sony Xperia 10 V",
         released: "Released 2023, July 01",
         memory: "128GB storage, microSDXC",
@@ -210,41 +208,10 @@ const phoneList = [
         battery: "5000mAh",
         charging: "Fast charging",
         watt: "30W",
-        img: "",
+        img: "imgs/10.jpg",
       },
       {
-        name: "Sony Xperia 5 V",
-        released: "Released 2023, September 01",
-        memory: "128GB/256GB storage, microSDXC",
-        os: "Android 13, upgradable to Android 14",
-        display: '6.1"',
-        resolution: "1080x2520 pixels",
-        camera: "48MP",
-        photoandvideo: "4320p",
-        ram: "8GB",
-        chipset: "Snapdragon 8 Gen 2",
-        battery: "5000mAh",
-        charging: "Fast charging",
-        watt: "30W",
-        img: "",
-      },
-      {
-        name: "Sony Xperia 1 IV",
-        released: "Released 2022, June 11",
-        memory: "256GB/512GB storage, microSDXC",
-        os: "Android 12, upgradable to Android 14",
-        display: '6.5"',
-        resolution: "1644x3840 pixels",
-        camera: "12MP",
-        photoandvideo: "4320p",
-        ram: "12GB",
-        chipset: "Snapdragon 8 Gen 1",
-        battery: "5000mAh",
-        charging: "Fast charging",
-        watt: "30W",
-        img: "",
-      },
-      {
+        id: 12,
         name: "Sony Xperia Pro-I",
         released: "Released 2021, December 10",
         memory: "512GB storage, microSDXC",
@@ -258,87 +225,7 @@ const phoneList = [
         battery: "4500mAh",
         charging: "Fast charging",
         watt: "30W",
-        img: "",
-      },
-      {
-        name: "Sony Xperia 10 IV",
-        released: "Released 2022, June 11",
-        memory: "128GB storage, microSDXC",
-        os: "Android 12, upgradable to Android 14",
-        display: '6.0"',
-        resolution: "1080x2520 pixels",
-        camera: "12MP",
-        photoandvideo: "2160p",
-        ram: "6GB",
-        chipset: "Snapdragon 695 5G",
-        battery: "5000mAh",
-        charging: "Fast charging",
-        watt: "30W",
-        img: "",
-      },
-      {
-        name: "Sony Xperia 5 IV",
-        released: "Released 2022, September 01",
-        memory: "128GB/256GB storage, microSDXC",
-        os: "Android 12, upgradable to Android 14",
-        display: '6.1"',
-        resolution: "1080x2520 pixels",
-        camera: "12MP",
-        photoandvideo: "4320p",
-        ram: "8GB",
-        chipset: "Snapdragon 8 Gen 1",
-        battery: "5000mAh",
-        charging: "Fast charging",
-        watt: "30W",
-        img: "",
-      },
-      {
-        name: "Sony Xperia 1 III",
-        released: "Released 2021, August 25",
-        memory: "256GB/512GB storage, microSDXC",
-        os: "Android 11, upgradable to Android 14",
-        display: '6.5"',
-        resolution: "1644x3840 pixels",
-        camera: "12MP",
-        photoandvideo: "4320p",
-        ram: "12GB",
-        chipset: "Snapdragon 888 5G",
-        battery: "4500mAh",
-        charging: "Fast charging",
-        watt: "30W",
-        img: "",
-      },
-      {
-        name: "Sony Xperia Pro",
-        released: "Released 2021, January 27",
-        memory: "512GB storage, microSDXC",
-        os: "Android 10, upgradable to Android 14",
-        display: '6.5"',
-        resolution: "1644x3840 pixels",
-        camera: "12MP",
-        photoandvideo: "4320p",
-        ram: "12GB",
-        chipset: "Snapdragon 865 5G",
-        battery: "4000mAh",
-        charging: "Fast charging",
-        watt: "21W",
-        img: "",
-      },
-      {
-        name: "Sony Xperia 10 III",
-        released: "Released 2021, June 11",
-        memory: "128GB storage, microSDXC",
-        os: "Android 11, upgradable to Android 14",
-        display: '6.0"',
-        resolution: "1080x2520 pixels",
-        camera: "12MP",
-        photoandvideo: "2160p",
-        ram: "6GB",
-        chipset: "Snapdragon 690 5G",
-        battery: "4500mAh",
-        charging: "Fast charging",
-        watt: "30W",
-        img: "",
+        img: "imgs/13.jpg",
       },
     ],
   },
@@ -346,6 +233,7 @@ const phoneList = [
     company: "Xiaomi",
     phones: [
       {
+        id: 13,
         name: "Xiaomi 15 Ultra",
         released: "Released 2025, February 28",
         memory: "256GB/512GB/1TB storage, no card slot",
@@ -359,9 +247,10 @@ const phoneList = [
         battery: "5000mAh",
         charging: "Fast charging",
         watt: "90W",
-        img: "",
+        img: "imgs/14.jpg",
       },
       {
+        id: 14,
         name: "Xiaomi 15",
         released: "Released 2024, October 29",
         memory: "256GB/512GB storage, no card slot",
@@ -375,9 +264,10 @@ const phoneList = [
         battery: "5400mAh",
         charging: "Fast charging",
         watt: "90W",
-        img: "",
+        img: "imgs/15.jpg",
       },
       {
+        id: 15,
         name: "Xiaomi 15 Pro",
         released: "Released 2024, October 29",
         memory: "256GB/512GB/1TB storage, no card slot",
@@ -391,9 +281,10 @@ const phoneList = [
         battery: "6100mAh",
         charging: "Fast charging",
         watt: "90W",
-        img: "",
+        img: "imgs/16.jpg",
       },
       {
+        id: 16,
         name: "Xiaomi Mix Flip",
         released: "Released 2024, October 15",
         memory: "256GB/512GB storage, no card slot",
@@ -407,9 +298,10 @@ const phoneList = [
         battery: "4780mAh",
         charging: "Fast charging",
         watt: "67W",
-        img: "",
+        img: "imgs/17.jpg",
       },
       {
+        id: 17,
         name: "Xiaomi Mix Fold 4",
         released: "Released 2024, August 16",
         memory: "256GB/512GB/1TB storage, no card slot",
@@ -423,9 +315,10 @@ const phoneList = [
         battery: "5000mAh",
         charging: "Fast charging",
         watt: "67W",
-        img: "",
+        img: "imgs/18.jpg",
       },
       {
+        id: 18,
         name: "Xiaomi 14T Pro",
         released: "Released 2024, July 20",
         memory: "256GB/512GB storage, no card slot",
@@ -439,9 +332,10 @@ const phoneList = [
         battery: "5000mAh",
         charging: "Fast charging",
         watt: "120W",
-        img: "",
+        img: "imgs/placeholder.png",
       },
       {
+        id: 19,
         name: "Xiaomi 14T",
         released: "Released 2024, July 20",
         memory: "128GB/256GB storage, no card slot",
@@ -455,9 +349,10 @@ const phoneList = [
         battery: "5000mAh",
         charging: "Fast charging",
         watt: "120W",
-        img: "",
+        img: "imgs/placeholder.png",
       },
       {
+        id: 20,
         name: "Xiaomi 14 Civi",
         released: "Released 2024, May 10",
         memory: "128GB/256GB storage, no card slot",
@@ -471,9 +366,10 @@ const phoneList = [
         battery: "4500mAh",
         charging: "Fast charging",
         watt: "67W",
-        img: "",
+        img: "imgs/placeholder.png",
       },
       {
+        id: 21,
         name: "Xiaomi 14 Lite",
         released: "Released 2024, March 25",
         memory: "128GB/256GB storage, microSDXC",
@@ -487,9 +383,10 @@ const phoneList = [
         battery: "4500mAh",
         charging: "Fast charging",
         watt: "67W",
-        img: "",
+        img: "imgs/placeholder.png",
       },
       {
+        id: 22,
         name: "Xiaomi 14",
         released: "Released 2023, December 31",
         memory: "256GB/512GB storage, no card slot",
@@ -503,7 +400,7 @@ const phoneList = [
         battery: "4500mAh",
         charging: "Fast charging",
         watt: "90W",
-        img: "",
+        img: "imgs/placeholder.png",
       },
     ],
   },
@@ -511,6 +408,7 @@ const phoneList = [
     company: "Oppo",
     phones: [
       {
+        id: 23,
         name: "Oppo Find N5",
         released: "Released 2025, February 28",
         memory: "512GB storage, no card slot",
@@ -524,9 +422,10 @@ const phoneList = [
         battery: "5600mAh",
         charging: "Fast charging",
         watt: "80W",
-        img: "",
+        img: "imgs/19.jpg",
       },
       {
+        id: 24,
         name: "Oppo Reno13 Pro",
         released: "Released 2024, November 15",
         memory: "256GB/512GB storage, no card slot",
@@ -540,9 +439,10 @@ const phoneList = [
         battery: "5800mAh",
         charging: "Fast charging",
         watt: "80W",
-        img: "",
+        img: "imgs/20.jpg",
       },
       {
+        id: 25,
         name: "Oppo Reno13",
         released: "Released 2024, November 15",
         memory: "256GB/512GB storage, no card slot",
@@ -556,9 +456,10 @@ const phoneList = [
         battery: "5600mAh",
         charging: "Fast charging",
         watt: "80W",
-        img: "",
+        img: "imgs/21.jpg",
       },
       {
+        id: 26,
         name: "Oppo Reno13 F",
         released: "Released 2025, January 10",
         memory: "256GB/512GB storage, microSDXC",
@@ -572,9 +473,10 @@ const phoneList = [
         battery: "5800mAh",
         charging: "Fast charging",
         watt: "45W",
-        img: "",
+        img: "imgs/22.jpg",
       },
       {
+        id: 27,
         name: "Oppo Reno12 Pro",
         released: "Released 2024, August 27",
         memory: "256GB storage, no card slot",
@@ -588,9 +490,10 @@ const phoneList = [
         battery: "5000mAh",
         charging: "Fast charging",
         watt: "67W",
-        img: "",
+        img: "imgs/placeholder.png",
       },
       {
+        id: 28,
         name: "Oppo Reno12",
         released: "Released 2024, August 27",
         memory: "256GB storage, no card slot",
@@ -604,9 +507,10 @@ const phoneList = [
         battery: "5000mAh",
         charging: "Fast charging",
         watt: "67W",
-        img: "",
+        img: "imgs/placeholder.png",
       },
       {
+        id: 29,
         name: "Oppo Reno11 Pro",
         released: "Released 2024, January 15",
         memory: "256GB storage, no card slot",
@@ -620,9 +524,10 @@ const phoneList = [
         battery: "4600mAh",
         charging: "Fast charging",
         watt: "80W",
-        img: "",
+        img: "imgs/placeholder.png",
       },
       {
+        id: 30,
         name: "Oppo Reno11",
         released: "Released 2024, January 15",
         memory: "128GB/256GB storage, no card slot",
@@ -636,9 +541,10 @@ const phoneList = [
         battery: "5000mAh",
         charging: "Fast charging",
         watt: "67W",
-        img: "",
+        img: "imgs/placeholder.png",
       },
       {
+        id: 31,
         name: "Oppo Reno11 F",
         released: "Released 2024, February 20",
         memory: "256GB storage, microSDXC",
@@ -652,9 +558,10 @@ const phoneList = [
         battery: "5000mAh",
         charging: "Fast charging",
         watt: "67W",
-        img: "",
+        img: "imgs/placeholder.png",
       },
       {
+        id: 32,
         name: "Oppo Find X8 Pro",
         released: "Released 2024, March 10",
         memory: "256GB/512GB storage, no card slot",
@@ -668,7 +575,7 @@ const phoneList = [
         battery: "5000mAh",
         charging: "Fast charging",
         watt: "80W",
-        img: "",
+        img: "imgs/placeholder.png",
       },
     ],
   },
@@ -676,6 +583,7 @@ const phoneList = [
     company: "Asus",
     phones: [
       {
+        id: 33,
         name: "Asus Zenfone 12 Ultra",
         released: "Released 2025, March 5",
         memory: "256GB/512GB storage, no card slot",
@@ -689,9 +597,10 @@ const phoneList = [
         battery: "5000mAh",
         charging: "Fast charging",
         watt: "65W",
-        img: "",
+        img: "imgs/23.jpg",
       },
       {
+        id: 34,
         name: "Asus ROG Phone 9 Pro",
         released: "Released 2025, January 20",
         memory: "512GB/1TB storage, no card slot",
@@ -705,9 +614,10 @@ const phoneList = [
         battery: "6000mAh",
         charging: "Fast charging",
         watt: "65W",
-        img: "",
+        img: "imgs/24.jpg",
       },
       {
+        id: 35,
         name: "Asus ROG Phone 9",
         released: "Released 2025, January 20",
         memory: "256GB/512GB storage, no card slot",
@@ -721,9 +631,10 @@ const phoneList = [
         battery: "6000mAh",
         charging: "Fast charging",
         watt: "65W",
-        img: "",
+        img: "imgs/25.jpg",
       },
       {
+        id: 36,
         name: "Asus Zenfone 11 Ultra",
         released: "Released 2024, August 15",
         memory: "256GB/512GB storage, no card slot",
@@ -737,9 +648,10 @@ const phoneList = [
         battery: "5000mAh",
         charging: "Fast charging",
         watt: "65W",
-        img: "",
+        img: "imgs/26.jpg",
       },
       {
+        id: 37,
         name: "Asus ROG Phone 8 Pro",
         released: "Released 2024, March 10",
         memory: "512GB/1TB storage, no card slot",
@@ -753,9 +665,10 @@ const phoneList = [
         battery: "6000mAh",
         charging: "Fast charging",
         watt: "65W",
-        img: "",
+        img: "imgs/27.jpg",
       },
       {
+        id: 38,
         name: "Asus ROG Phone 8",
         released: "Released 2024, March 10",
         memory: "256GB/512GB storage, no card slot",
@@ -769,9 +682,10 @@ const phoneList = [
         battery: "6000mAh",
         charging: "Fast charging",
         watt: "65W",
-        img: "",
+        img: "imgs/placeholder.png",
       },
       {
+        id: 39,
         name: "Asus Zenfone 10",
         released: "Released 2023, October 5",
         memory: "128GB/256GB storage, microSDXC",
@@ -785,9 +699,10 @@ const phoneList = [
         battery: "4300mAh",
         charging: "Fast charging",
         watt: "30W",
-        img: "",
+        img: "imgs/placeholder.png",
       },
       {
+        id: 40,
         name: "Asus ROG Phone 7 Ultimate",
         released: "Released 2023, April 13",
         memory: "512GB storage, no card slot",
@@ -801,9 +716,10 @@ const phoneList = [
         battery: "6000mAh",
         charging: "Fast charging",
         watt: "65W",
-        img: "",
+        img: "imgs/placeholder.png",
       },
       {
+        id: 41,
         name: "Asus ROG Phone 7",
         released: "Released 2023, April 13",
         memory: "256GB/512GB storage, no card slot",
@@ -817,9 +733,10 @@ const phoneList = [
         battery: "6000mAh",
         charging: "Fast charging",
         watt: "65W",
-        img: "",
+        img: "imgs/placeholder.png",
       },
       {
+        id: 42,
         name: "Asus Zenfone 9",
         released: "Released 2022, September 15",
         memory: "128GB/256GB storage, no card slot",
@@ -833,7 +750,7 @@ const phoneList = [
         battery: "4300mAh",
         charging: "Fast charging",
         watt: "30W",
-        img: "",
+        img: "imgs/placeholder.png",
       },
     ],
   },
@@ -841,6 +758,7 @@ const phoneList = [
     company: "Infinix",
     phones: [
       {
+        id: 43,
         name: "Infinix Note 50 Pro 4G",
         released: "Expected 2025",
         memory: "128GB/256GB storage, microSDXC",
@@ -854,9 +772,10 @@ const phoneList = [
         battery: "5000mAh",
         charging: "Fast charging",
         watt: "33W",
-        img: "",
+        img: "imgs/28.jpg",
       },
       {
+        id: 44,
         name: "Infinix Zero Flip",
         released: "Expected 2025",
         memory: "256GB storage, no card slot",
@@ -870,9 +789,10 @@ const phoneList = [
         battery: "4000mAh",
         charging: "Fast charging",
         watt: "44W",
-        img: "",
+        img: "imgs/29.jpg",
       },
       {
+        id: 45,
         name: "Infinix Note 40 Pro+",
         released: "Expected 2025",
         memory: "128GB/256GB storage, microSDXC",
@@ -886,9 +806,10 @@ const phoneList = [
         battery: "5000mAh",
         charging: "Fast charging",
         watt: "33W",
-        img: "",
+        img: "imgs/30.jpg",
       },
       {
+        id: 46,
         name: "Infinix Zero 40 5G",
         released: "Expected 2025",
         memory: "256GB storage, no card slot",
@@ -902,9 +823,10 @@ const phoneList = [
         battery: "4500mAh",
         charging: "Fast charging",
         watt: "44W",
-        img: "",
+        img: "imgs/31.jpg",
       },
       {
+        id: 47,
         name: "Infinix Hot 50 Pro 4G",
         released: "Expected 2025",
         memory: "128GB storage, microSDXC",
@@ -918,9 +840,10 @@ const phoneList = [
         battery: "6000mAh",
         charging: "Fast charging",
         watt: "18W",
-        img: "",
+        img: "imgs/placeholder.png",
       },
       {
+        id: 48,
         name: "Infinix Smart 9 HD",
         released: "Expected 2025",
         memory: "64GB storage, microSDXC",
@@ -934,9 +857,10 @@ const phoneList = [
         battery: "5000mAh",
         charging: "Standard charging",
         watt: "10W",
-        img: "",
+        img: "imgs/placeholder.png",
       },
       {
+        id: 49,
         name: "Infinix Hot 50i",
         released: "Expected 2025",
         memory: "64GB storage, microSDXC",
@@ -950,9 +874,10 @@ const phoneList = [
         battery: "5000mAh",
         charging: "Standard charging",
         watt: "10W",
-        img: "",
+        img: "imgs/placeholder.png",
       },
       {
+        id: 50,
         name: "Infinix Zero 30 4G",
         released: "2024, September",
         memory: "256GB storage, microSDXC",
@@ -966,9 +891,10 @@ const phoneList = [
         battery: "5000mAh",
         charging: "Fast charging",
         watt: "33W",
-        img: "",
+        img: "imgs/placeholder.png",
       },
       {
+        id: 51,
         name: "Infinix GT 10 Pro",
         released: "2024, August",
         memory: "256GB storage, microSDXC",
@@ -982,9 +908,10 @@ const phoneList = [
         battery: "5000mAh",
         charging: "Fast charging",
         watt: "45W",
-        img: "",
+        img: "imgs/placeholder.png",
       },
       {
+        id: 52,
         name: "Infinix Note 30 VIP",
         released: "2024, June",
         memory: "256GB storage, microSDXC",
@@ -998,7 +925,224 @@ const phoneList = [
         battery: "5000mAh",
         charging: "Fast charging",
         watt: "68W",
-        img: "",
+        img: "imgs/placeholder.png",
+      },
+    ],
+  },
+];
+
+const tabletList = [
+  {
+    company: "Iphone",
+    tablets: [
+      {
+        id: 1,
+        name: "Apple iPad Pro 13 (2024)",
+        released: "Released 2024, May 15",
+        memory: "256GB/512GB/2TB storage, no card slot",
+        os: "iPadOS 17.5.1, up to iPadOS 18.3.2",
+        display: '13.0"',
+        resolution: "2064x2752 pixels",
+        camera: "12MP",
+        photoandvideo: "2160p",
+        ram: "8/16GB RAM",
+        chipset: "Apple M4",
+        battery: "10290mAh",
+        charging: "",
+        watt: "",
+        img: "imgs/tablets-1.jpg",
+      },
+      {
+        id: 2,
+        name: "Apple iPad Air 11 (2024)",
+        released: "Released 2024, May 15",
+        memory: "128GB/256GB/1TB storage, no card slot",
+        os: "iPadOS 17.4, upgradable to iPadOS 18",
+        display: '11.0"',
+        resolution: "1640x2360 pixels",
+        camera: "12MP",
+        photoandvideo: "2160p",
+        ram: "8GB RAM",
+        chipset: "Apple M2",
+        battery: "28.93Wh",
+        charging: "",
+        watt: "",
+        img: "imgs/placeholder.png",
+      },
+      {
+        id: 3,
+        name: "Apple iPad Pro 12.9 (2021)",
+        released: "Released 2021, May 21",
+        memory: "128GB/256GB/2TB storage, no card slot",
+        os: "iPadOS 14.5.1, upgradable to iPadOS 17.2",
+        display: '12.9"',
+        resolution: "2048x2732 pixels",
+        camera: "12MP",
+        photoandvideo: "4K",
+        ram: "8/16GB RAM",
+        chipset: "Apple M1",
+        battery: "10758mAh",
+        charging: "",
+        watt: "",
+        img: "imgs/placeholder.png",
+      },
+      {
+        id: 4,
+        name: "Apple iPad mini (2021)",
+        released: "Released 2021, September 24",
+        memory: "64GB/256GB storage, no card slot",
+        os: "iPadOS 15, upgradable to iPadOS 18.2.1",
+        display: '8.3"',
+        resolution: "1488x2266 pixels",
+        camera: "12MP",
+        photoandvideo: "4K",
+        ram: "4GB RAM",
+        chipset: "Apple A15 Bionic",
+        battery: "5078mAh",
+        charging: "",
+        watt: "",
+        img: "imgs/placeholder.png",
+      },
+      {
+        id: 5,
+        name: "Apple iPad Air (2022)",
+        released: "Released 2022, March 18",
+        memory: "64GB/256GB storage, no card slot",
+        os: "iPadOS 15.4, upgradable to iPadOS 17.2",
+        display: '10.9"',
+        resolution: "1640x2360 pixels",
+        camera: "12MP",
+        photoandvideo: "4K",
+        ram: "8GB RAM",
+        chipset: "Apple M1",
+        battery: "28.6Wh",
+        charging: "",
+        watt: "",
+        img: "imgs/placeholder.png",
+      },
+      {
+        id: 6,
+        name: "Apple iPad Pro 11 (2022)",
+        released: "Released 2022, October 26",
+        memory: "128GB/256GB/2TB storage, no card slot",
+        os: "iPadOS 16.1, upgradable to iPadOS 17.2",
+        display: '11.0"',
+        resolution: "1668x2388 pixels",
+        camera: "12MP",
+        photoandvideo: "4K",
+        ram: "8/16GB RAM",
+        chipset: "Apple M2",
+        battery: "7538mAh",
+        charging: "",
+        watt: "",
+        img: "imgs/placeholder.png",
+      },
+    ],
+  },
+  {
+    company: "Samsung",
+    tablets: [
+      {
+        id: 7,
+        name: "Samsung Galaxy Tab S10 Ultra",
+        released: "Released 2024, October 3",
+        memory: "256GB/512GB/1TB storage, microSDXC",
+        os: "Android 14 with One UI 6.1.1",
+        display: '14.6"',
+        resolution: "1848x2960 pixels",
+        camera: "13MP + 6MP",
+        photoandvideo: "4K",
+        ram: "8/12/16GB RAM",
+        chipset: "MediaTek Dimensity 9300+ Octa Core",
+        battery: "11200mAh",
+        charging: "45W",
+        watt: "",
+        img: "imgs/placeholder.png",
+      },
+      {
+        id: 8,
+        name: "Samsung Galaxy Tab S10+",
+        released: "Released 2024, October 3",
+        memory: "256GB/512GB storage, microSDXC",
+        os: "Android 14 with One UI 6.1.1",
+        display: '12.4"',
+        resolution: "1752x2800 pixels",
+        camera: "13MP + 6MP",
+        photoandvideo: "4K",
+        ram: "8/12GB RAM",
+        chipset: "MediaTek Dimensity 9300+ Octa Core",
+        battery: "10090mAh",
+        charging: "45W",
+        watt: "",
+        img: "imgs/placeholder.png",
+      },
+      {
+        id: 9,
+        name: "Samsung Galaxy Tab S9 Ultra",
+        released: "Released 2023, August 11",
+        memory: "256GB/512GB/1TB storage, microSDXC",
+        os: "Android 14 with One UI 6.1.1",
+        display: '14.6"',
+        resolution: "1848x2960 pixels",
+        camera: "13MP + 6MP",
+        photoandvideo: "4K",
+        ram: "8/12/16GB RAM",
+        chipset: "Qualcomm Snapdragon 8 Gen 2 for Galaxy",
+        battery: "11200mAh",
+        charging: "45W",
+        watt: "",
+        img: "imgs/placeholder.png",
+      },
+      {
+        id: 10,
+        name: "Samsung Galaxy Tab S9+",
+        released: "Released 2023, August 11",
+        memory: "256GB/512GB storage, microSDXC",
+        os: "Android 14 with One UI 6.1.1",
+        display: '12.4"',
+        resolution: "1752x2800 pixels",
+        camera: "13MP + 6MP",
+        photoandvideo: "4K",
+        ram: "8/12GB RAM",
+        chipset: "Qualcomm Snapdragon 8 Gen 2 for Galaxy",
+        battery: "10090mAh",
+        charging: "45W",
+        watt: "",
+        img: "imgs/placeholder.png",
+      },
+      {
+        id: 11,
+        name: "Samsung Galaxy Tab S9",
+        released: "Released 2023, August 11",
+        memory: "128GB/256GB storage, microSDXC",
+        os: "Android 14 with One UI 6.1.1",
+        display: '11.0"',
+        resolution: "1600x2560 pixels",
+        camera: "13MP",
+        photoandvideo: "4K",
+        ram: "8/12GB RAM",
+        chipset: "Qualcomm Snapdragon 8 Gen 2 for Galaxy",
+        battery: "8400mAh",
+        charging: "45W",
+        watt: "",
+        img: "imgs/placeholder.png",
+      },
+      {
+        id: 12,
+        name: "Samsung Galaxy Tab A9+",
+        released: "Released 2023, October 5",
+        memory: "64GB/128GB storage, microSDXC",
+        os: "Android 13 with One UI 5.1",
+        display: '11.0"',
+        resolution: "1200x1920 pixels",
+        camera: "8MP",
+        photoandvideo: "1080p",
+        ram: "4/6/8GB RAM",
+        chipset: "Qualcomm Snapdragon 695",
+        battery: "7040mAh",
+        charging: "15W",
+        watt: "",
+        img: "imgs/placeholder.png",
       },
     ],
   },
@@ -1007,6 +1151,10 @@ const phoneList = [
 // API route to get all phone data
 app.get("/api/phones", (req, res) => {
   res.json(phoneList);
+});
+
+app.get("/api/tablets", (req, res) => {
+  res.json(tabletList);
 });
 
 // API route to get phones by company
@@ -1019,6 +1167,57 @@ app.get("/api/phones/:company", (req, res) => {
     res.json(result);
   } else {
     res.status(404).json({ message: "Company not found" });
+  }
+});
+
+app.get("/api/phone/:id", (req, res) => {
+  const phoneId = parseInt(req.params.id); // Parse ID as an integer
+  let foundPhone = null;
+
+  // Loop through companies and their phones to find the phone by ID
+  phoneList.forEach((company) => {
+    const phone = company.phones.find((item) => item.id === phoneId);
+    if (phone) {
+      foundPhone = phone;
+    }
+  });
+
+  if (foundPhone) {
+    res.json(foundPhone);
+  } else {
+    res.status(404).json({ message: `Phone with ID ${phoneId} not found` });
+  }
+});
+
+// API route to get phones by company
+app.get("/api/tablets/:company", (req, res) => {
+  const company = req.params.company.toLowerCase();
+  const result = tabletList.find(
+    (item) => item.company.toLowerCase() === company
+  );
+  if (result) {
+    res.json(result);
+  } else {
+    res.status(404).json({ message: "Company not found" });
+  }
+});
+
+app.get("/api/tablet/:id", (req, res) => {
+  const phoneId = parseInt(req.params.id); // Parse ID as an integer
+  let foundPhone = null;
+
+  // Loop through companies and their phones to find the phone by ID
+  tabletList.forEach((company) => {
+    const phone = company.tablets.find((item) => item.id === phoneId);
+    if (phone) {
+      foundPhone = phone;
+    }
+  });
+
+  if (foundPhone) {
+    res.json(foundPhone);
+  } else {
+    res.status(404).json({ message: `Phone with ID ${phoneId} not found` });
   }
 });
 
